@@ -8,8 +8,8 @@ public class ArrayUtil {
     * indexOf
     * */
 
-    int[] items;
-    int count;
+    private int[] items;
+    private int count;
 
     public ArrayUtil(int size) {
         items = new int[size];
@@ -19,15 +19,6 @@ public class ArrayUtil {
         for (int i = 0; i < count ; i++) {
             System.out.println(items[i]);
         }
-    }
-
-    public int indexOf(int item){
-        for (int i = 0; i < count; i++) {
-            if(items[i] == item){
-                return i;
-            }
-        }
-        return -1;
     }
 
     public void insert(int item){
@@ -43,17 +34,25 @@ public class ArrayUtil {
         count++;
     }
 
+    public int indexOf(int item){
+        for (int i = 0; i < count; i++) {
+            if(items[i] == item){
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public void removeAt(int index){
-        if(index < 0 || index > count-1){
+        if(index < 0 || index >= count){
             throw  new IllegalArgumentException();
         }
         //  0 1 2 3 index
         //  1 2 3 4 value
         for (int i = index; i < count; i++) {
             items[i] = items[i + 1];
-            count--;
         }
-
+        count--;
     }
 }
 
